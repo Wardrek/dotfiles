@@ -177,7 +177,7 @@ return {
                     },
                 },
             },
-            -- hydra_lsp = {},
+            hydra_lsp = {},
             gdscript = {
                 filetypes = { "gd", "gdscript", "gdscript3" },
             },
