@@ -46,6 +46,7 @@ return {
                 end
                 if full_path == current_file_path then
                     current_mark = tostring(i)
+                    break
                 end
             end
 
