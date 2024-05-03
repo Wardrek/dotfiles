@@ -3,7 +3,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = "VeryLazy",
     config = function()
-        local harpoon = require("harpoon.mark")
+        local harpoon = require("harpoon")
 
         local function truncate_branch_name(branch)
             if not branch or branch == "" then
@@ -22,7 +22,11 @@ return {
         end
 
         local function harpoon_component()
-            local total_marks = harpoon.get_length()
+            local harpoon_entries = harpoon:list()
+            local root_dir = harpoon_entries.config:get_root_dir()
+            local current_file_path = vim.api.nvim_buf_get_name(0)
+
+            local total_marks = harpoon_entries:length()
 
             if total_marks == 0 then
                 return ""
@@ -30,9 +34,19 @@ return {
 
             local current_mark = "-"
 
-            local mark_idx = harpoon.get_current_index()
-            if mark_idx ~= nil then
-                current_mark = tostring(mark_idx)
+            for i =1, total_marks do
+                local harpoon_entry = harpoon_entries:get(i)
+                local harpoon_path = harpoon_entry.value
+
+                local full_path = nil
+                if string.sub(harpoon_path, 1, 1) ~= "/" then
+                    full_path = root_dir .. "/" .. harpoon_path
+                else
+                    full_path = harpoon_path
+                end
+                if full_path == current_file_path then
+                    current_mark = tostring(i)
+                end
             end
 
             return string.format("󱡅 %s/%d", current_mark, total_marks)

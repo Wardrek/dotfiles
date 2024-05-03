@@ -170,45 +170,24 @@ nnoremap('<leader>ft', '<cmd>TodoTelescope<cr>', {})
 
 
 -- Harpoon
-local harpoon_ui = require("harpoon.ui")
-local harpoon_mark = require("harpoon.mark")
+local harpoon = require("harpoon")
 
 -- Open harpoon ui
 nnoremap('<leader>ho', function()
-    harpoon_ui.toggle_quick_menu()
+    harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 
 -- Add current file to harpoon
 nnoremap("<leader>ha", function()
-    harpoon_mark.add_file()
-end)
-
--- Remove current file from harpoon
-nnoremap("<leader>hr", function()
-    harpoon_mark.rm_file()
-end)
-
--- Remove all files from harpoon
-nnoremap("<leader>hc", function()
-    harpoon_mark.clear_all()
+    harpoon:list():add()
 end)
 
 -- Quickly jump to harpooned files
-nnoremap("<leader>1", function()
-    harpoon_ui.nav_file(1)
-end)
-nnoremap("<leader>2", function()
-    harpoon_ui.nav_file(2)
-end)
-nnoremap("<leader>3", function()
-    harpoon_ui.nav_file(3)
-end)
-nnoremap("<leader>4", function()
-    harpoon_ui.nav_file(4)
-end)
-nnoremap("<leader>5", function()
-    harpoon_ui.nav_file(5)
-end)
+for i = 1,5 do
+    nnoremap("<leader>" .. i, function()
+        harpoon:list():select(i)
+    end)
+end
 
 -- Neogit
 local neogit = require('neogit')
