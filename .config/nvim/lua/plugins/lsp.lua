@@ -61,7 +61,7 @@ return {
 
         -- Configure mason to auto install servers
         require("mason-lspconfig").setup({
-            automatic_installation = { exclude = { "ocamllsp", "gleam" } },
+            ensure_installed = { "lua_ls" },
         })
 
         local has_words_before = function()
@@ -190,8 +190,7 @@ return {
             vim.api.nvim_buf_create_user_command(buffer_number, "Format", function(_)
                 vim.lsp.buf.format({
                     filter = function(format_client)
-                        -- Use Prettier to format TS/JS if it's available
-                        return format_client.name ~= "tsserver" or not null_ls.is_registered("prettier")
+                        return format_client.name ~= "tsserver"
                     end,
                 })
             end, { desc = "LSP: Format current buffer with LSP" })

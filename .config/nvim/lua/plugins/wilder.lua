@@ -12,16 +12,16 @@ return {
         wilder.setup({
             modes = { ":", "/", "?" },
             next_key = '<Tab>',
-            previous_key =  '<S-Tab>',
-            accept_key = '<Down>',
-            reject_key = '<Up>',
+            previous_key = '<S-Tab>',
+            accept_key = '<c-space>',
+            reject_key = '<c-e>',
         })
 
         -- Enable fuzzy matching for commands and buffers
         wilder.set_option("pipeline", {
             wilder.branch(
                 wilder.cmdline_pipeline({
-                fuzzy = 1,
+                    fuzzy = 1,
                 }),
                 wilder.vim_search_pipeline({
                     fuzzy = 1,
