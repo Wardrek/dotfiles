@@ -197,18 +197,6 @@ nnoremap("<leader>gp", ":Neogit pull<cr>")
 nnoremap("<leader>gP", ":Neogit push<cr>")
 nnoremap("<leader>gb", ":Telescope git_branches<cr>")
 
--- -- Gitutter --
--- -- Stage hunk under cursor
--- nnoremap("<leader>hs", "<cmd>GitGutterStageHunk<cr>")
--- -- Undo hunk under cursor
--- nnoremap("<leader>hu", "<cmd>GitGutterUndoHunk<cr>")
--- -- Preview branch hunk under cursor
--- nnoremap("<leader>hp", "<cmd>GitGutterPreviewHunk<cr>")
--- -- Goto next hunk
--- nnoremap("]h", "<cmd>GitGutterNextHunk<cr>")
--- -- Goto prev hunk
--- nnoremap("[h", "<cmd>GitGutterPrevHunk<cr>")
-
 -- Gitsigns --
 M.map_gitsigns_keybinds = function(buffer_number)
     local gs = package.loaded.gitsigns
