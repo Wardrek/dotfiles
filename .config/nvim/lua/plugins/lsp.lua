@@ -166,10 +166,13 @@ return {
                     },
                 },
             },
-            hydra_lsp = {},
+            yamlls = {},
+            -- hydra_lsp = {},
+            dockerls = {},
             gdscript = {
                 filetypes = { "gd", "gdscript", "gdscript3" },
             },
+            ts_ls = {},
         }
 
         -- Default handlers for LSP
