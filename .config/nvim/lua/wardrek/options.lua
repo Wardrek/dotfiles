@@ -37,6 +37,8 @@ vim.opt.splitbelow = true
 -- Better search options
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Enable 24-bit color
 vim.opt.termguicolors = true
