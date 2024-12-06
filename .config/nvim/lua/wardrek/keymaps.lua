@@ -154,27 +154,23 @@ local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
 vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
 -- Make builtin f, F, t, T also repeatable with ; and ,
-vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
-vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
-vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
-vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
+vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
+vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
+vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
 
 -- Trouble
-nnoremap('<leader>tt', function()
-    require("trouble").toggle('workspace_diagnostics')
-end)
+nnoremap('<leader>tt', "<cmd>Trouble diagnostics toggle<cr>")
+nnoremap('<leader>td', "<cmd>Trouble todo toggle<cr>")
 
-nnoremap('<leader>td', function()
-    require("trouble").toggle('todo')
-end)
---
+-- FIX: jumpings
 -- Trouble: jumpings
 vim.keymap.set("n", "]t", function()
     require("trouble").next({ skip_groups = true, jump = true })
 end, {})
 
 vim.keymap.set("n", "[t", function()
-    require("trouble").previous({ skip_groups = true, jump = true })
+    require("trouble").prev({ skip_groups = true, jump = true })
 end, {})
 
 -- Todo-comment
