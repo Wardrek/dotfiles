@@ -222,9 +222,14 @@ return {
         end
 
         vim.diagnostic.config({
-            -- update_in_insert = true,
-            virtual_text = true,
             underline = false,
+            virtual_lines = {
+                true,
+                severity = {vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN}
+            },
+            virtual_text = {
+                severity = {vim.diagnostic.severity.INFO, vim.diagnostic.severity.HINT}
+            },
             float = {
                 focusable = false,
                 style = "minimal",
