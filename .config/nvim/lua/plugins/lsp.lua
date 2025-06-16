@@ -183,17 +183,14 @@ return {
             yamlls = {},
             -- hydra_lsp = {},
             dockerls = {},
-            gdscript = {
-                filetypes = { "gd", "gdscript", "gdscript3" },
-            },
+            -- gdscript = {
+            --     filetypes = { "gd", "gdscript", "gdscript3" },
+            -- },
             ts_ls = {},
         }
 
         -- Default handlers for LSP
-        local default_handlers = {
-            ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-            ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-        }
+        local default_handlers = {}
 
         -- nvim-cmp supports additional completion capabilities
         local capabilities = vim.lsp.protocol.make_client_capabilities()

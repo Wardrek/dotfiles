@@ -244,7 +244,8 @@ end
 -- Undotree
 nnoremap("<leader>u", vim.cmd.UndotreeToggle)
 
--- LSP Keybinds (exports a function to be used in ../../after/plugin/lsp.lua b/c we need a reference to the current buffer) --
+-- LSP Keybinds (exports a function to be used in ../../after/plugin/lsp.lua
+-- b/c we need a reference to the current buffer)
 M.map_lsp_keybinds = function(buffer_number)
     -- Rename variable
     nnoremap("<leader>rn", vim.lsp.buf.rename, { desc = "LSP: [R]e[n]ame", buffer = buffer_number })
@@ -285,7 +286,10 @@ M.map_lsp_keybinds = function(buffer_number)
     )
 
     -- Hover documentation
-    nnoremap("K", vim.lsp.buf.hover, { desc = "LSP: Hover Documentation", buffer = buffer_number })
+    nnoremap("K", function()
+                    vim.lsp.buf.hover({border = "rounded", max_height = 25})
+                  end,
+            { desc = "LSP: Hover Documentation", buffer = buffer_number })
 
     -- Signature documentation
     nnoremap("<leader>k", vim.lsp.buf.signature_help, { desc = "LSP: Signature Documentation", buffer = buffer_number })
