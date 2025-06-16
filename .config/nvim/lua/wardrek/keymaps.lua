@@ -191,7 +191,7 @@ nnoremap("<leader>ha", function()
 end)
 
 -- Quickly jump to harpooned files
-for i = 1,5 do
+for i = 1,9 do
     nnoremap("<leader>" .. i, function()
         harpoon:list():select(i)
     end)
